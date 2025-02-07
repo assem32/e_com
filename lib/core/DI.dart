@@ -1,11 +1,13 @@
-
-
 import 'package:dio/dio.dart';
 import 'package:e_com/core/ApiServices.dart';
+import 'package:e_com/data/dataSource/remote.dart';
+import 'package:e_com/data/repoImp/RepoImp.dart';
 import 'package:get_it/get_it.dart';
 
-final loctor = GetIt.instance;
+final locator = GetIt.instance;
 
-void setupLocator(){
-  loctor.registerSingleton<APIServices>(APIServices(Dio()));
+void setupLocator() {
+  locator.registerSingleton<APIServices>(APIServices(Dio()));
+
+  locator.registerSingleton<Repoimp>(Repoimp(RemoteData(APIServices(Dio()))));
 }

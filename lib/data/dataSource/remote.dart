@@ -1,4 +1,5 @@
 import 'package:e_com/core/ApiServices.dart';
+import 'package:e_com/data/model/product_model/product_model.dart';
 
 class RemoteData{
     final APIServices apiServices;
@@ -10,6 +11,11 @@ class RemoteData{
       'username':email,
       'password':password
     });
+    return response;
+  }
+
+  Future<dynamic>fetchProducts()async{
+    var response = await apiServices.get('products');
     return response;
   }
 

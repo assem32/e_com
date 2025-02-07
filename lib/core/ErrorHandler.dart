@@ -14,7 +14,8 @@ class ErrorHandler {
         case DioExceptionType.badResponse:
           // Handle server response errors
           final errorData = error.response?.data;
-          if (errorData is Map<String, dynamic> && errorData.containsKey('message')) {
+          if (errorData is Map<String, dynamic> &&
+              errorData.containsKey('message')) {
             return "Error: ${errorData['message']}";
           }
           return "Server error occurred with status code ${error.response?.statusCode ?? 'unknown'}.";
