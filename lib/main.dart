@@ -3,6 +3,8 @@ import 'package:e_com/data/repoImp/RepoImp.dart';
 import 'package:e_com/domain/use_case/get_products_usecase.dart';
 import 'package:e_com/presentation/home/Home.dart';
 import 'package:e_com/presentation/home/manger/home_cubit.dart';
+import 'package:e_com/presentation/main_layout/MainLayout.dart';
+import 'package:e_com/presentation/main_layout/manger/cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,6 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(create: (context)=>MainLayoutCubit()),
         BlocProvider(
             create: (context) =>
                 ProductCubit(FetchProductsUseCase(locator.get<Repoimp>()))..fetechProduct())
@@ -43,8 +46,10 @@ class MyApp extends StatelessWidget {
           // tested with just a hot reload.
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
+        
         ),
-        home: HomePage(),
+        debugShowCheckedModeBanner: false,
+        home: MainLayout(),
       ),
     );
   }

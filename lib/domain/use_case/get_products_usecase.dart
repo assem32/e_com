@@ -9,7 +9,7 @@ class FetchProductsUseCase extends Usecase<List<dynamic>>{
   FetchProductsUseCase(this.repo);
 
   @override
-  Future<Either<String, List<dynamic>>> call()async {
+  Future<Either<String, List<ProductModel>>> call()async {
     return await repo.fetchProduct();
   }
   

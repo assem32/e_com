@@ -1,3 +1,4 @@
+
 import 'package:e_com/core/ApiServices.dart';
 import 'package:e_com/data/model/product_model/product_model.dart';
 
@@ -14,9 +15,14 @@ class RemoteData{
     return response;
   }
 
-  Future<dynamic>fetchProducts()async{
+  Future<List<ProductModel>>fetchProducts()async{
     var response = await apiServices.get('products');
-    return response;
+    List<ProductModel> list = convertToProductModelList(response); 
+    return list;
   }
 
+
+  List<ProductModel> convertToProductModelList(List<dynamic> jsonList) {
+  return jsonList.map((json) => ProductModel.fromJson(json)).toList();
+}
 }

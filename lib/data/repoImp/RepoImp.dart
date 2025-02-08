@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:dartz/dartz.dart';
 import 'package:e_com/core/ErrorHandler.dart';
 import 'package:e_com/data/dataSource/remote.dart';
@@ -23,7 +21,7 @@ class Repoimp implements Repo {
   }
 
   @override
-  Future<Either<String, List<dynamic>>> fetchProduct()async {
+  Future<Either<String, List<ProductModel>>> fetchProduct()async {
     try{
       var response = await remoteData.fetchProducts();
       return right(response);

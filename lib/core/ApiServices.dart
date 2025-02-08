@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:e_com/data/model/product_model/product_model.dart';
 
 class APIServices {
   final String baseUrl = 'https://fakestoreapi.com/';
